@@ -17,7 +17,7 @@ class MailBox
     int to;
     int from;
     int hopCount;
-
+  
     char *content;
   };
 
