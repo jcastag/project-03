@@ -7,11 +7,11 @@
 #include <sstream>
 
 using namespace std;
- struct Node
-    {
-        int nodeId;
-        std::vector<int> adj;
-    };
+struct Node
+{
+    int nodeId;
+    std::vector<int> adj;
+};
 
 class Graph
 {
@@ -21,7 +21,6 @@ class Graph
     void linetoGraph(string);
 
 public:
-
     Graph(string filename); // takes filename to create graph
     Node getNode(int);
     void printgraph();
