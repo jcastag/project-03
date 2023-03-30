@@ -29,7 +29,7 @@ class MailBox
   std::mutex mtx;
 
 public:
-  MailBox(Graph){};
+  MailBox(){};
   ~MailBox();
   bool empty(uint16_t mid);
   bool mbox_avail(uint16_t mid);
@@ -40,11 +40,11 @@ public:
 
 int MailBox::send(uint16_t mID, const void *packet, int length)
 {
-
+  return 0;
 }
 
 int MailBox::recv(uint16_t mid, void *packet, int max){
-
+return 0;
 }
 
 static MailBox mailbox;

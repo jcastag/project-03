@@ -11,56 +11,57 @@
 using namespace std;
 
 // function for picking wait/sleep time
-double rand_exponential(double mean)
+// double rand_exponential(double mean)
+// {
+//     return -mean * log(rand_unit());
+// }
+
+// // function for picking recipient
+// double rand_range(double min, double max)
+// {
+//     return rand_unit() * (max - min) + min;
+// }
+// double rand_unit()
+// {
+    
+//     unsigned int num;
+//     return rand_s(&num);
+// }
+
+struct Args
 {
-    return -mean * log(rand_unit());
-}
+};
 
-// function for picking recipient
-double rand_range(double min, double max)
+void threadFunc(Node id)
 {
-    return rand_unit() * (max - min) + min;
+
+    // make a message
+    // pick a destination
+    // send message
+    //  recieving messages, not sending if thread is destination
 }
-double rand_unit(){
-
-    unsigned int num;
-    return rand_s(&num);
-}
-
-
-
-
-void threadFunc(Node id){
-
-//make a message
-//pick a destination
-//send message
-// recieving messages, not sending if thread is destination 
-
-
-
-
-}
-
 
 int main()
 {
     // CREATING GRAPH
     string filename;
-    string path = "graph/";
+   
 
     string line;
-    cout << "file name: ";
+    cout << "graph size: ";
     cin >> filename;
-    path += filename;
+    
+    string path = "graph/A" + filename + ".dat";
+    
     cout << filename << endl;
     Graph newGraph = Graph(path);
     newGraph.printgraph();
-    vector<thread> threads(newGraph.getNodeNum());
+    //vector<thread> threads(newGraph.getNodeNum());
 
-    for(int i = 0; i < newGraph.getNodeNum(); i ++){
-        threads[i] = thread();   
-    }
+    // for (int i = 0; i < newGraph.getNodeNum(); i++)
+    // {
+    //     threads[i] = thread();
+    // }
 
     return 0;
 }
