@@ -56,12 +56,15 @@ int main()
     cout << filename << endl;
     Graph newGraph = Graph(path);
     newGraph.printgraph();
-    //vector<thread> threads(newGraph.getNodeNum());
+    vector<thread> threads(newGraph.getNodeNum());
 
-    // for (int i = 0; i < newGraph.getNodeNum(); i++)
-    // {
-    //     threads[i] = thread();
-    // }
+     for (int i = 0; i < newGraph.getNodeNum(); i++)
+     {
+         threads[i] = thread();
+     }
+
+    
+
 
     return 0;
 }
