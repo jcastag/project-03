@@ -2,7 +2,11 @@
  * mailbox.cc
  * Copyright(c) 2022 Dongsoo S. Kim
  */
-#include <thread>
+/**TODO
+ * [] turn packet into letter
+ * [] add letter to queues
+ * [] pop letter from queues
+ */
 #include <iostream>
 #include <string.h>
 #include <map>
@@ -40,11 +44,22 @@ public:
 
 int MailBox::send(uint16_t mID, const void *packet, int length)
 {
-  return 0;
+
+  mtx.lock();
+  // add to mailbox's queue
+  mailbox._mailboxes[mID].push(&packet);
+  mtx.unlock();
+
+  return;
 }
 
-int MailBox::recv(uint16_t mid, void *packet, int max){
-return 0;
+int MailBox::recv(uint16_t mid, void *packet, int max)
+{
+  mtx.lock();
+  // dequeueing
+  mtx.unlock();
+
+  return 0;
 }
 
 static MailBox mailbox;
@@ -64,8 +79,6 @@ MailBox::~MailBox()
   }
   mtx.unlock();
 }
-
-
 
 bool MailBox::empty(uint16_t mid)
 {
