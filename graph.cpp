@@ -18,6 +18,12 @@ Graph::Graph(string filename)
     }
 }
 
+Graph::Graph()
+{
+    this->vertices = 0;
+    this->nodeNum = 0;
+}
+
 int Graph::getNodeNum()
 {
     return this->nodeNum;

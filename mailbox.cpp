@@ -47,10 +47,10 @@ int MailBox::send(uint16_t mID, const void *packet, int length)
 
   mtx.lock();
   // add to mailbox's queue
-  mailbox._mailboxes[mID].push(&packet);
+  // mailbox._mailboxes[mID].push(&packet);
   mtx.unlock();
 
-  return;
+  return 0;
 }
 
 int MailBox::recv(uint16_t mid, void *packet, int max)

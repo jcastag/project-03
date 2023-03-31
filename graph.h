@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GRAPH_H
+#define GRAPH_H
 
 #include <string>
 #include <fstream>
@@ -21,8 +22,11 @@ class Graph
     void linetoGraph(string);
 
 public:
+    Graph();
     Graph(string filename); // takes filename to create graph
     Node getNode(int);
     void printgraph();
     int getNodeNum();
 };
+
+#endif
