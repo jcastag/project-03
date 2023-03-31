@@ -16,8 +16,8 @@ using namespace std;
 
 double rand_unit()
 {
-    random_device r;
-    mt19937 g(r());
+    static random_device r;
+    static mt19937 g(r());
     uniform_real_distribution<> d(0.0, 1.0);
     return d(g);
 }
@@ -37,11 +37,6 @@ struct Letters
 {
     int travelTime;
     int hopCount;
-    Letters(int t, int h)
-    {
-        this->travelTime = t;
-        this->hopCount = h;
-    }
 };
 
 struct ThreadArgs
@@ -55,8 +50,17 @@ struct ThreadArgs
 
 void threadFunc(ThreadArgs args)
 {
+    // gives the thread time duration
+    auto now = chrono::system_clock::now;
+    auto stop = now() + chrono::seconds(10);
 
+    while (now() < stop)
+    {
+        // sleeping
+       
+    }
     // pick a destination
+    // this_thread::sleep_for(chrono::milliseconds())
     // send message
     //  recieving messages, not sending if thread is destination
 }
@@ -84,12 +88,16 @@ int main()
         threads[i] = thread(threadFunc, ref(arguments[i]));
     }
 
-    cout << rand_range(0, 10) << endl;
-    cout << rand_range(0, 10) << endl;
-    cout << rand_range(0, 10) << endl;
+    this_thread::sleep_for(chrono::milliseconds(5000));
+    cout << "threads about to join ..." << endl;
+    this_thread::sleep_for(chrono::milliseconds(2000));
 
-    // wait
-    //  join threads
+    for (int i = 0; i < newGraph.getNodeNum(); i++)
+    {
+        threads[i].join();
+    }
+    cout << "threads joined." << endl;
+
     //  have report
 
     return 0;
